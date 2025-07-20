@@ -1,0 +1,30 @@
+name: Release Docker Image
+
+on:
+  push:
+    tags: [ 'v*' ]         # هر بار روی تگی مثل v0.2.0 پوش شود اجرا می‌شود
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ستاپ Python فقط برای pip hash‑check (می‌تواند حذف شود، ولی بد نیست)
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.CI_DOCKER_USER }}
+          password: ${{ secrets.CI_DOCKER_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: nargeslatifinavid/ai-agent:${{ github.ref_name }}
