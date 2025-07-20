@@ -7,7 +7,7 @@ from sqlalchemy.engine.url import make_url
 # 1) DATABASE_URL
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql+asyncpg://postgres:password123@db:5432/mydb",
+    "postgresql+asyncpg://postgres:password123@127.0.0.1:5432/mydb",
 )
 
 # 2) Async engine for Agent
@@ -20,7 +20,10 @@ AsyncSessionLocal = sessionmaker(
 
 # 3) Sync introspection for tests
 def get_tables_and_columns_sync() -> dict[str, list[str]]:
-  
+    """
+    بازتاب (reflect) اسکیمای دیتابیس به‌صورت همگام (psycopg2).
+    اگر دیتابیس در دسترس نباشد، خطا را بالا می‌دهد.
+    """
     # 3.1) ensure psycopg2 driver
     url = make_url(DATABASE_URL)
     if url.drivername.endswith("+asyncpg"):
@@ -31,9 +34,7 @@ def get_tables_and_columns_sync() -> dict[str, list[str]]:
         url = url.set(host="127.0.0.1")
 
     # 3.3) build sync engine
-
-    sync_url = url.render_as_string(hide_password=False)
-    engine_sync = create_engine(sync_url, echo=False, future=True)
+    engine_sync = create_engine(str(url), echo=False, future=True)
     metadata = MetaData()
     metadata.reflect(bind=engine_sync)
 

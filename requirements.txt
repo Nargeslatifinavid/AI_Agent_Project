@@ -1,72 +1,19 @@
-annotated-types @ file:///home/conda/feedstock_root/build_artifacts/annotated-types_1733247046149/work
-anyio @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_anyio_1742243108/work
-async-timeout==5.0.1
+# ------------------------------------
+# requirements.txt   (CPU‑only wheels)
+# ------------------------------------
+--extra-index-url https://download.pytorch.org/whl/cpu  
+
+fastapi==0.116.1
+uvicorn==0.35.0
+
+sqlalchemy>=2.0.41
 asyncpg==0.30.0
-certifi @ file:///home/conda/feedstock_root/build_artifacts/certifi_1752493286596/work/certifi
-charset-normalizer==3.4.2
-click @ file:///D:/bld/click_1747811308011/work
-colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1733218098505/work
-diskcache @ file:///home/conda/feedstock_root/build_artifacts/diskcache_1734196270869/work
-dnspython @ file:///home/conda/feedstock_root/build_artifacts/dnspython_1733256735222/work
-email_validator @ file:///home/conda/feedstock_root/build_artifacts/email-validator-meta_1733300719943/work
-exceptiongroup @ file:///home/conda/feedstock_root/build_artifacts/exceptiongroup_1746947292760/work
-fastapi @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_fastapi-core_1752617909/work
-fastapi-cli @ file:///home/conda/feedstock_root/build_artifacts/fastapi-cli_1751972066250/work
-greenlet==3.2.3
-h11 @ file:///home/conda/feedstock_root/build_artifacts/h11_1745526374115/work
-h2 @ file:///home/conda/feedstock_root/build_artifacts/h2_1738578511449/work
-hpack @ file:///home/conda/feedstock_root/build_artifacts/hpack_1737618293087/work
-httpcore @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_httpcore_1745602916/work
-httptools @ file:///D:/bld/httptools_1732707687873/work
-httpx @ file:///home/conda/feedstock_root/build_artifacts/httpx_1733663348460/work
-hyperframe @ file:///home/conda/feedstock_root/build_artifacts/hyperframe_1737618333194/work
-idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1733211830134/work
-iniconfig==2.1.0
-Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1741263328855/work
-jsonpatch==1.33
-jsonpointer==3.0.0
-langchain-core==0.3.69
+psycopg2-binary>=2.9.10
+
+transformers==4.53.2
+torch==2.2.2          
 langgraph==0.5.3
-langgraph-checkpoint==2.1.0
-langgraph-prebuilt==0.5.2
-langgraph-sdk==0.1.73
-langsmith==0.4.6
-llama_cpp_python @ file:///D:/bld/llama-cpp-python_1730267578992/work
-markdown-it-py @ file:///home/conda/feedstock_root/build_artifacts/markdown-it-py_1733250460757/work
-MarkupSafe @ file:///D:/bld/markupsafe_1733219610373/work
-mdurl @ file:///home/conda/feedstock_root/build_artifacts/mdurl_1733255585584/work
-numpy @ file:///D:/bld/numpy_1747544591878/work/dist/numpy-2.2.6-cp310-cp310-win_amd64.whl#sha256=af66576ce916c795ffa81be9620c8138a3fda6e1713b2bf7775a630e47eca3a8
-orjson==3.11.0
-ormsgpack==1.10.0
-packaging==25.0
-pluggy==1.6.0
-pydantic @ file:///home/conda/feedstock_root/build_artifacts/pydantic_1749927112905/work
-pydantic-settings @ file:///home/conda/feedstock_root/build_artifacts/pydantic-settings_1750801564484/work
-pydantic_core @ file:///D:/bld/bld/rattler-build_pydantic-core_1746625416/work
-Pygments @ file:///home/conda/feedstock_root/build_artifacts/pygments_1750615794071/work
+
 pytest==8.4.1
-python-dotenv @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_python-dotenv_1750789290/work
-python-multipart @ file:///home/conda/feedstock_root/build_artifacts/python-multipart_1734420773152/work
-PyYAML @ file:///D:/bld/pyyaml_1737454681229/work
-requests==2.32.4
-requests-toolbelt==1.0.0
-rich @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_rich_1743371105/work/dist
-rich-toolkit @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_rich-toolkit_1751941286/work
-shellingham @ file:///home/conda/feedstock_root/build_artifacts/shellingham_1733300899265/work
-sniffio @ file:///home/conda/feedstock_root/build_artifacts/sniffio_1733244044561/work
-SQLAlchemy==2.0.41
-sse-starlette @ file:///home/conda/feedstock_root/build_artifacts/sse-starlette_1751800410703/work
-starlette @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_starlette_1751323809/work
-starlette-context @ file:///home/conda/feedstock_root/build_artifacts/starlette-context_1735139286487/work
-tenacity==9.1.2
-tomli==2.2.1
-typer==0.16.0
-typer-slim==0.16.0
-typing-inspection @ file:///home/conda/feedstock_root/build_artifacts/typing-inspection_1747870647094/work
-typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_typing_extensions_1751643513/work
-urllib3==2.5.0
-uvicorn @ file:///D:/bld/uvicorn_1751201629880/work
-watchfiles @ file:///D:/bld/watchfiles_1750053837532/work
-websockets @ file:///D:/bld/websockets_1741285501074/work
-xxhash==3.5.0
-zstandard==0.23.0
+pytest-asyncio==1.1.0
+numpy>=1.24
