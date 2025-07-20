@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     services:
       postgres:
         image: postgres:15
@@ -17,25 +18,40 @@ jobs:
           POSTGRES_DB: mydb
         ports: [ "5432:5432" ]
         options: >-
-          --health-cmd="pg_isready -U postgres"
+          --health-cmd="pg_isready -U postgres -d mydb"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
 
     steps:
+      # Checkout repository
       - uses: actions/checkout@v4
 
+      # Set up Python
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      - name: Install dependencies
+      # Install psql client (needed to run SQL scripts)
+      - name: Install system packages
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
+      # Load schema and seed data into the Postgres service
+      - name: Run schema and seed SQL
+        env:
+          PGPASSWORD: password123
+        run: |
+          psql -h localhost -U postgres -d mydb -f db/init/create-tables.sql
+          psql -h localhost -U postgres -d mydb -f db/init/insert-seed-data.sql
+
+      # Install Python dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # Run the test suite
       - name: Run tests
         env:
           DATABASE_URL: postgresql+asyncpg://postgres:password123@localhost:5432/mydb
-        run: |
-          pytest -q
+        run: pytest -q
